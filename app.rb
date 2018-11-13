@@ -4,7 +4,6 @@ class Battle < Sinatra::Base
 
   get "/" do
   	erb :index
-    # 'Testing infrastructure working!'
   end
 
   post "/names" do
