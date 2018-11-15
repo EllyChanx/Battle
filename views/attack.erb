@@ -1,3 +1,8 @@
-<p><%=@player_1_name%> attacks <%=@player_2_name%></p>
+<h2><%=@game.player_1.name%> attacks <%=@game.player_2.name%></h2>
 
-<h1><%=@player_2_name%>: <%=@player_2_hp%>HP</h1>
+<p><%=@game.player_1.name%>: <%=@game.player_1.hp%>HP</p>
+<p><%=@game.player_2.name%>: <%=@game.player_2.hp%>HP</p>
+
+<form action="/play">
+	<input type="submit" value="Fight Back!">
+</form>
