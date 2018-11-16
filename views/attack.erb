@@ -1,8 +1,18 @@
-<h2><%=@game.player_1.name%> attacks <%=@game.player_2.name%></h2>
+<h2><%=@game.cur_passive.name%> attacks <%=@game.cur_active.name%></h2>
 
-<p><%=@game.player_1.name%>: <%=@game.player_1.hp%>HP</p>
-<p><%=@game.player_2.name%>: <%=@game.player_2.hp%>HP</p>
+<p><%=@game.player_1.name%>: <%=@game.player_1.hp%>hp</p>
+<p><%=@game.player_2.name%>: <%=@game.player_2.hp%>hp</p>
 
-<form action="/play">
-	<input type="submit" value="Fight Back!">
-</form>
+<% if !(@game.end_game?) %>
+	<form action="/play" >
+		<input 	type="submit" value="Fight Back!" >
+	</form>
+<% end%>
+
+
+<% if @game.end_game? %>
+	<p>
+		<%=@game.winner.name%> WON 
+	</p>
+<% end %>
+

@@ -5,7 +5,8 @@
 <p><%=@game.player_2.name%>: <%=@game.player_2.hp%>hp</p>
 
 
-	<form action="/attack">
-		Action: <%=@game.cur_active.name%>'s turn 
-		<input type="submit" value="Attack">
-	</form>
+<form action="/attack">
+	Action: <%=@game.cur_active.name%>'s turn <!-- why need .name? -->
+	<input type="submit" value="Attack">
+</form>
+

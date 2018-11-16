@@ -5,6 +5,14 @@ class Game
     @turn = 1
   end
 
+  def self.create(player_1, player_2)
+    @game = Game.new(player_1, player_2)
+  end
+
+  def self.instance
+    @game
+  end
+
   def attack(player)
     player.receive_damage
     @turn += 1
@@ -24,6 +32,19 @@ class Game
 
   def cur_passive
     (@turn%2 == 0) ? player_1 : player_2
+  end
+
+  def loser
+    (@players.detect { |x| x.hp <= 0 }) 
+  end
+
+  def end_game?
+    true if loser
+  end
+
+  def winner
+    fail unless end_game?
+    @players.detect {|x| x.hp >= 0}
   end
 
 end

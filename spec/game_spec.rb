@@ -20,17 +20,43 @@ describe Game do
   end
 
   describe "# switch turn function" do
-
     it "initial current turn is player 1" do
-      expect(game.cur_turn).to eq player1
+      expect(game.cur_active).to eq player1
     end
     
     it "switch turn after attack" do
       allow(player2).to receive(:receive_damage){true}
       game.attack(player2)
-      expect(game.cur_turn).to eq player2
+      expect(game.cur_active).to eq player2
+    end
+  end
+
+  describe "end game!" do
+
+    it "find loser in the game - player1" do
+      allow(player2).to receive(:hp) {10}
+      allow(player1).to receive(:hp) {0}
+      expect(game.loser).to eq player1
     end
 
+    it "find loser in the game - player1" do
+      allow(player2).to receive(:hp) {0}
+      allow(player1).to receive(:hp) {10}
+      expect(game.loser).to eq player2
+    end
+
+    it "end game if one player's hp reach  0" do
+      allow(player2).to receive(:hp) {0}
+      allow(player1).to receive(:hp) {10}
+      game.loser
+      expect(game.end_game?).to eq true
+    end
+  end
+
+  it "shows winner is player1" do
+    allow(player2).to receive(:hp) {0}
+    allow(player1).to receive(:hp) {10}
+    expect(game.winner).to eq player1
   end
   
 end

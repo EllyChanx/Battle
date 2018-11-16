@@ -6,10 +6,10 @@ feature 'attack player' do
   end
 end
 
-feature 'reduce hp' do
-  scenario 'Player1 reduces Player2\'s hp by 10 per hit' do
-    sign_in_and_play
-    click_button('Attack')
-    expect(page).to have_content 'Mittens: 40HP'
-  end    
-end
+# feature 'reduce hp' do
+#   scenario 'Player1 reduces Player2\'s hp by 10 per hit' do
+#     sign_in_and_play
+#     click_button('Attack')
+#     expect(page).to have_content 'Mittens: 40hp'
+#   end    
+# end
